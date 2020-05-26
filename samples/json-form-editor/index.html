@@ -144,6 +144,13 @@
                  "type": "object",
                  "id": "person",
                  "properties": {
+                     "departmentIds": {
+                        "type": "array",
+                        "description": "Department Ids",
+                        "items": {
+                            "type": "string"
+                        }
+                     },
                      "name": {
                          "type": "string",
                          "description": "First and Last name",
@@ -251,12 +258,12 @@
              disable_properties: true,
              show_errors: 'always'
          });
-         
+
          var watcherCallback = function(path) {
              cfApi.window.updateHeight();
              validateAndSave();
          };
-  
+
          for (var key in editor.editors) {
              if (editor.editors.hasOwnProperty(key) && key !== 'root') {
                  editor.watch(key, watcherCallback.bind(editor, key));
